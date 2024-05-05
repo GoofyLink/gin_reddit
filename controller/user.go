@@ -54,11 +54,13 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2. 处理业务 logic层
-	if err := logic.Login(loginParams); err != nil {
+	token, err := logic.Login(loginParams)
+	if err != nil {
 		zap.L().Error("logic.Login is failed", zap.String("username", loginParams.Username), zap.Error(err))
 		ResponseError(c, CodeUserPasswordError)
 		return
 	}
+	// 拿到token后，需要将token保存到redis中
 	// 3.返回数据
-	ResponseError(c, CodeSuccess)
+	ResponseSuccess(c, token)
 }

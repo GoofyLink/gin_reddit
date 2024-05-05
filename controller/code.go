@@ -13,6 +13,7 @@ const (
 	CodeUserPasswordError
 	CodeServerBusy
 	CodeSignUpFailed
+	CodeNeedLogin
 )
 
 // 错误码与错误信息映射
@@ -26,6 +27,7 @@ var codeMap = map[ResCode]string{
 	CodeUserPasswordError: "username or password is error",
 	CodeServerBusy:        "server is busy",
 	CodeSignUpFailed:      "sign up failed",
+	CodeNeedLogin:         "need login",
 }
 
 // 获取错误信息
